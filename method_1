@@ -1,0 +1,63 @@
+1) Turn on both Raspberry Pi and log-in
+
+2) On both Raspberry Pi, install "festival":
+
+	a) Open up a terminal
+	
+	b) Type the following command and press enter:
+			
+			sudo apt-get install festival
+
+	EXPECTED OUTCOME: 
+
+		The Pi will either tell you that festival is already installed 
+	OR 	it will ask if you want to install festival; type "y" and press enter.
+
+3) Choose one of the Raspberry Pi and make it talk to itself:
+
+	a) In a terminal, type the following command and press enter:
+
+			echo "Welcome to my world."|festival --tts
+
+	EXPECTED OUTCOME: The Pi will say "Welcome to my world" aloud.
+
+4) Connect both of the Raspberry Pi to the same network
+
+5) Find out the address of the Raspberry Pi that will send the first message:
+
+	a) In a terminal on that Raspberry Pi, type in the following command and press enter:
+
+			ifconfig
+
+	EXPECTED OUTCOME: A list of information about your Pi will appear on screen.
+
+	b) Write down the IP address as listed on the screen, eg. 192.168.1.12
+
+6) Instruct one of the Raspberry Pi to listen for a message:
+
+	a) In a terminal on that Pi, type the following command and press enter:
+
+			nc -l 2000 | festival --ttc
+
+	EXPECTED OUTCOME: Nothing
+
+7) Send a message from the other Raspberry Pi:
+
+	a) In a terminal on that Pi, type the following command, replacing [IP address] with the actual IP address of the other Raspberry Pi, eg. nc 192.168.1.12 2000
+
+			nc [IP address] 2000
+
+	b) Press enter.
+
+	EXPECTED OUTCOME: Nothing
+
+	b) type in your message and press enter.
+
+	EXPECTED OUTCOME: Nothing
+
+	c) Hold down the CTRL key and press the D key.
+
+	EXPECTED OUTCOME: The other Pi will speak your message aloud.
+
+8) Swap roles and try to make the other Pi talk.
+	
